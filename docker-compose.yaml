@@ -1,0 +1,12 @@
+version: "3.3"
+
+services:
+  partir_pdf:
+    ports:
+      - "4920:80"
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: partir_com/pdf
+    container_name: 'partir_pdf'

@@ -1,0 +1,87 @@
+<html>
+	<head>
+		<title>HTML2PDF</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.2">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="jquery.js"></script>
+	</head>
+	
+	<body>
+		<div class="main">
+			<img src="donald.jpg" class="askRonald" width="228" height="406">
+			<div class="leaveOffering"> pdfizer une page </div>
+			<form action="testpdf.php" onsubmit="clearFields()">
+				URL:<br>
+				<input required type="text" name="url" class="macAddr" value="https://partir.com/" maxlength="100"><br>
+				<select required name="pageSize" id="">
+					<option disabled selected value="A1">taille page</option>
+					<option value="A1">A1</option>
+					<option value="A2">A2</option>
+					<option value="A3">A3</option>
+					<option value="A4">A4</option>
+					<option value="A5">A5</option>
+					<option value="DLE">DLE</option>
+					<option value="Executive">Executive</option>
+					<option value="Legal">Legal</option>
+					<option value="Letter">Letter</option>
+				</select>
+				<select required name="viewportSize" id="">
+					<option disabled selected value="1600x900">taille viewport</option>
+					<option value="1024x768">1024x768</option>
+					<option value="1280x720">1280x720</option>
+					<option value="1280x800">1280x800</option>
+					<option value="1440x900">1440x900</option>
+					<option value="1600x900">1600x900</option>
+					<option value="1920x1080">1920x1080</option>
+				</select>
+				<select required name="jsDelay" id="">
+					<option disabled selected value="200">delai javascript</option>
+					<option value="200">200</option>
+					<option value="300">300</option>
+					<option value="400">400</option>
+					<option value="800">800</option>
+					<option value="1000">1000</option>
+					<option value="1500">1500</option>
+					<option value="2000">2000</option>
+					<option value="3000">3000</option>
+				</select>
+				<input type="submit" class="button" value="faire un sacrifice vaudou"><br>
+				<div class="arguments" style="display: flex; flex-flow:column nowrap; justify-content: center; align-items: center;">
+					<a href="wkhtmltopdf.txt" style="text-align: center;">documentation</a>
+					<div>
+						<input onchange="applyArgument(this)" type="text" id="arg-sup-1" class="arg-sup" placeholder="argument sup.">
+						<input type="text" id="arg-sup-val-1" class="arg-sup-val" placeholder="valeur">
+					</div>
+				</div>
+				<button onclick="addArgument()">Ajouter</button>
+			</form>
+		</div>
+	</body>
+	<script>
+		function addArgument(){
+			event.preventDefault();
+			let val1 = $(".arg-sup").last().attr("id").split("-")[2];
+			let val2 = $(".arg-sup-val").last().attr("id").split("-")[3];
+			if (isNaN(val1)) val1 = 2;
+			if (isNaN(val2)) val2 = 2;
+			$(".arguments").append(
+				`<div style="display: flex; flex-flow: row nowrap;">
+					<input onchange="applyArgument(this)" type="text" id="arg-sup-${val1}" class="arg-sup" placeholder="argument sup.">
+					<input type="text" id="arg-sup-val-${val2}" class="arg-sup-val" placeholder="valeur">
+				</div>
+				`
+			)
+		}
+
+		function applyArgument(e){
+			if ($(e).hasClass("arg-sup")){
+				let name = $(e).val();
+				$(e).siblings(".arg-sup-val").attr("name", name)
+			}
+		}
+
+		function clearFields(){
+			$(".arg-sup").remove();
+		}
+	</script>
+</html>

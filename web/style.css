@@ -1,0 +1,51 @@
+body{
+	background-image: url("nuages.jpg");
+	background-repeat: repeat;
+    text-align:center;
+}
+.main{
+	display: inline-block;
+    top: 15%;
+	
+	position: relative;
+	padding:20px;
+	width:50%;
+	text-align:center;
+	background-color: lightskyblue;
+	color: white;
+	border-radius: 4px;
+}
+.macAddr{
+	width: 360px;
+	padding: 12px 20px;
+	margin: 8px 0;
+	background-color: black;
+	color:white;
+}
+
+.button{
+	width: 60%;
+	margin-top:50px;
+	padding:12px;
+	border-radius: 4px;
+	background-color: yellow;
+}
+.entry{
+	width: 60%;
+	padding:12px;
+	border-radius: 4px;
+	background-color: black;
+	color:white;
+}
+.leaveOffering{
+	text-align:center;
+	width:100%;
+	padding: 20px;
+	color: white;
+	font-size: 140%;
+	font-weight: bold;
+}
+.askRonald{
+	float:left;
+	padding-right: 3%;
+}
